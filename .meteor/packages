@@ -6,5 +6,6 @@
 meteor-platform
 autopublish
 insecure
-limemakers:three
+percolate:interpolated-helper
+d3
 

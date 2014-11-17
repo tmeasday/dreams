@@ -6,6 +6,8 @@ var SPACING = 15;
 
 var TRIES = 1000;
 
+var MAX_DEPTH = 10;
+
 centerDistance = function(c1, c2) {
   return Math.sqrt(c1.d * c1.d + c2.d * c2.d - 
     2 * c1.d * c2.d * Math.cos(c1.theta - c2.theta));
@@ -49,6 +51,9 @@ var makeCircles = function() {
     }
     
     circle.r -= SPACING;
+    
+    // should this depend on R?
+    circle.depth = 1 + Math.random() * (MAX_DEPTH - 1);
     
     return circle;
   }
