@@ -1,14 +1,18 @@
 var RADIUS = 1000
 
-var MAX = 500;
-var MIN = 20;
-var SPACING = 10;
+var MAX = RADIUS / 5;
+var MIN = 40;
+var SPACING = 15;
 
-var TRIES = 10;
+var TRIES = 1000;
 
-var circleDistance = function(c1, c2) {
+centerDistance = function(c1, c2) {
   return Math.sqrt(c1.d * c1.d + c2.d * c2.d - 
     2 * c1.d * c2.d * Math.cos(c1.theta - c2.theta));
+}
+
+circleDistance = function (c1, c2) {
+  return centerDistance(c1, c2) - c1.r - c2.r;
 }
 
 var makeCircles = function() {
@@ -33,40 +37,39 @@ var makeCircles = function() {
     //     and take the mid point of the biggest gap (is that right?)
     circle.d = Math.random() * RADIUS;
     
-    circle.r = RADIUS - circle.d;
+    circle.r = Math.min(RADIUS - circle.d, MAX);
     for (var i = 0; i < circles.length; i++) {
-      circle.r = Math.min(circle.r, circleDistance(circle, circles[i]) - SPACING);
-      if (circle.r < MIN) {
+      var distance = circleDistance(circle, circles[i]);
+      circle.r += Math.min(distance, 0);
+      
+      if (circle.r < (MIN + SPACING)) {
         // too small, try again
         return makeCircle(n - 1);
       }
     }
+    
+    circle.r -= SPACING;
     
     return circle;
   }
   
   while (true) {
     var circle = makeCircle(TRIES);
-    if (! circle)
+    if (! circle) 
       return circles;
     
-    circles.push(circle)
+    circles.push(circle);
   }
 }
 
-var drawCircles = function($svg, circles) {
-  _.each(circles, function(circle) {
-    var $circle = $('<circle>')
-      .attr('r', circle.r)
-      .attr('cx', circle.d * Math.cos(circle.r))
-      .attr('cy', circle.d * Math.sin(circle.r))
-      .appendTo($svg);
-  });
-}
-
-Meteor.startup(function() {
-  var circles = makeCircles();
-  console.log(circles)
-  var $svg = $('svg');
-  drawCircles($svg, circles);
+Template.circles.helpers({
+  circles: function () {
+    return makeCircles();
+  },
+  cx: function () {
+    return this.d * Math.cos(this.theta);
+  },
+  cy: function () {
+    return this.d * Math.sin(this.theta);
+  }
 });

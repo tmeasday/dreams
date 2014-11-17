@@ -1,0 +1,12 @@
+/* CSS declarations go here */
+
+
+svg circle {
+  fill: rgba(128, 128, 128, 0.2);
+}
+
+svg circle.boundary {
+  fill: transparent;
+  stroke: rgba(128, 128, 128, 0.3);
+  stroke-width: 10;
+}
