@@ -1,0 +1,9 @@
+#globe .globe {
+  fill: #eeeeee;
+}
+
+#globe .equator, #globe .latitude {
+  stroke: white;
+  stroke-width: 0.5;
+  fill: transparent;
+}
