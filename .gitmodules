@@ -1,0 +1,4 @@
+[submodule "packages/interpolated-helper"]
+	path = packages/interpolated-helper
+	url = https://github.com/tmeasday/interpolated-helper.git
+	branch = master
