@@ -1,18 +1,12 @@
 var RADIUS = 50;
 
 Template.globe.created = function() {
-  this.easer = new ReactiveEaser(d3.ease('ease-in-expo'));
-  this.easer.set(0);
+  this.easer = new ReactiveEaser(d3.ease('sin-in-out'), 3000);
+  this.easer.loop();
 }
 
 Template.globe.helpers({
   rx: function () {
-    return RADIUS * Template.instance().easer.get();
-  }
-});
-
-Template.globe.events({
-  'click button': function (event, template) {
-    template.easer.start();
+    return RADIUS * Math.abs(2 * Template.instance().easer.get() - 1);
   }
 });
