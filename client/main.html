@@ -3,6 +3,13 @@
 </head>
 
 <body>
-  {{> circles}}
-  {{> globe}}
+  {{> slide template='circles'}}
+  {{> slide template='globe'}}
 </body>
+
+<template name="slide">
+  {{#if visible}}
+    <h1>{{template}}</h1>
+    {{> Template.dynamic template=template}}
+  {{/if}}
+</template>
