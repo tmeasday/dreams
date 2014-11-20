@@ -1,8 +1,8 @@
-#globe .globe {
+svg .globe {
   fill: #eeeeee;
 }
 
-#globe .equator, #globe .latitude {
+svg .equator, svg .latitude {
   stroke: white;
   stroke-width: 0.5;
   fill: transparent;

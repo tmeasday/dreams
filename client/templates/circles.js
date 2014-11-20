@@ -4,6 +4,7 @@ var ZOOM = 2;
 Template.circles.created = function () {
   this.easer = new ReactiveEaser(d3.ease('ease-in-expo'));
   this.easer.set(0);
+  // this.easer.start(ANIMATION_TIME);
 }
 
 var currentZoom = function(power) {
@@ -16,24 +17,18 @@ var currentZoom = function(power) {
 Template.circles.helpers({
   boundaryWidth: function () {
     // zoom way, way faster
-    return 1000 * currentZoom(100);
+    return SVG_WIDTH * currentZoom(100);
   },
   circles: function () {
     return circles;
   },
   r: function () {
-    return currentZoom(this.depth) * this.r;
+    return SVG_WIDTH * currentZoom(this.depth) * this.r;
   },
   cx: function () {
-    return currentZoom(this.depth) * this.d * Math.cos(this.theta);
+    return SVG_WIDTH * currentZoom(this.depth) * this.d * Math.cos(this.theta);
   },
   cy: function () {
-    return currentZoom(this.depth) * this.d * Math.sin(this.theta);
-  }
-});
-
-Template.circles.events({
-  'click button': function (event, template) {
-    template.easer.start(ANIMATION_TIME);
+    return SVG_WIDTH * currentZoom(this.depth) * this.d * Math.sin(this.theta);
   }
 });

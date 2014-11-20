@@ -1,8 +1,8 @@
-var RADIUS = 1000
+var RADIUS = 1
 
 var MAX = RADIUS / 5;
-var MIN = 40;
-var SPACING = 15;
+var MIN = 0.04;
+var SPACING = 0.015;
 
 var TRIES = 1000;
 

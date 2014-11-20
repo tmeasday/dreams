@@ -3,8 +3,11 @@
 </head>
 
 <body>
-  {{> slide template='circles'}}
-  {{> slide template='globe'}}
+  <svg width="500" height="500" viewBox="-100 -100 200 200">
+    {{> slide template='dreams'}}
+    {{> slide template='circles'}}
+    {{> slide template='globe'}}
+  </svg>
 </body>
 
 <template name="slide">

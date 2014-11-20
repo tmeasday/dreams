@@ -1,0 +1,3 @@
+SVG_WIDTH = 100;
+SVG_HEIGHT = 100;
+
