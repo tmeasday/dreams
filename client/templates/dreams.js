@@ -35,7 +35,7 @@ Template._dreamsDripLine.created = function() {
   for (var i = 0; i < N_DRIPS_PER_LINE; i++) {
     var startTop = (randomLike(1/3) + i)/3;
     this.drips.push({
-      x: this.data * 2 * SVG_WIDTH / N_DRIP_LINES - SVG_WIDTH + 1,
+      x: this.data * 2 * SVG_WIDTH / N_DRIP_LINES - SVG_WIDTH,
       top: interpolate(circulator(startTop, -SVG_HEIGHT, SVG_HEIGHT), this.easer),
       height: randomLike(1/4) * SVG_HEIGHT
     });
