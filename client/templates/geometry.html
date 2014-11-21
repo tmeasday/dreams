@@ -1,8 +1,8 @@
 <template name="geometry">
   <text>They require care to grow</text>
-  <circle cx="0" cy="0" r={{r}}></circle>
-  <rect {{rectAttributes}}></rect>
-  <g transform="{{triangleTransform}}">
+  <g transform="{{transform}}">
+    {{> circle}}
+    {{> square}}
     {{> triangle}}
   </g>
 </template>
