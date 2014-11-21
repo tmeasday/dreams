@@ -8,7 +8,6 @@ Template.geometry.helpers({
     width: 2 * SVG_WIDTH,
     height: 2 * SVG_HEIGHT
   },
-  trianglePoints: '0,' + -1 * SVG_HEIGHT + ' '  +
-    SVG_WIDTH + ',' + SVG_HEIGHT*0.9 + ' ' +
-    -1*SVG_WIDTH + ',' + SVG_HEIGHT*0.9 + ' '
+  triangleTransform: 'matrix(' + 2*SVG_WIDTH + ', 0, 0, ' + 2*SVG_WIDTH + ', ' 
+    + (-1*SVG_WIDTH) + ', ' + (-1*SVG_WIDTH) + ')'
 });

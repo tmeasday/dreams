@@ -2,5 +2,7 @@
   <text>They require care to grow</text>
   <circle cx="0" cy="0" r={{r}}></circle>
   <rect {{rectAttributes}}></rect>
-  <polygon points={{trianglePoints}}></polygon>
+  <g transform="{{triangleTransform}}">
+    {{> triangle}}
+  </g>
 </template>
