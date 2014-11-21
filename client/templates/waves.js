@@ -6,7 +6,7 @@ var coords = function(t, max) { // t between 0-1
 }
 
 Template.waves.created = function() {
-  this.easer = new ReactiveEaser(d3.ease('linear'));
+  this.easer = new ReactiveEaser(d3.ease('linear'), 5000);
   this.easer.loop();
 }
 
@@ -29,7 +29,7 @@ Template.waves.helpers({
       cx: coords(x, SVG_WIDTH),
       cy: coords(y, SVG_HEIGHT),
       r: function() {
-        var currentDist = Math.abs(easer.get() + distance);
+        var currentDist = Math.abs(2 * (0.5 - easer.get()) + distance);
         var r = 0.1 / Math.pow((1 + currentDist), 1);
         return SVG_WIDTH * r;
       }
