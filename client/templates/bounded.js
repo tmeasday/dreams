@@ -1,7 +1,7 @@
 var ANIMATION_TIME = 10000;
 var ZOOM = 2;
 
-Template.circles.created = function () {
+Template.bounded.created = function () {
   this.easer = new ReactiveEaser(d3.ease('ease-in-expo'));
   this.easer.set(0);
   // this.easer.start(ANIMATION_TIME);
@@ -14,7 +14,7 @@ var currentZoom = function(power) {
   return Math.pow(zoom, power);
 };
 
-Template.circles.helpers({
+Template.bounded.helpers({
   boundaryWidth: function () {
     // zoom way, way faster
     return SVG_WIDTH * currentZoom(100);

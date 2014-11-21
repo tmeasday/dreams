@@ -1,4 +1,5 @@
 Session.setDefault('visibleSlideIndex', 0);
+transitioning = new ReactiveVar(false);
 
 $(function() {
   $('body').on('keyup', function(event) {
@@ -6,6 +7,9 @@ $(function() {
       Session.set('visibleSlideIndex', Session.get('visibleSlideIndex') - 1);
     } else if (event.which === 40) { // down
       Session.set('visibleSlideIndex', Session.get('visibleSlideIndex') + 1);
+      
+      // it is the responsibility of the slide to set this to false
+      transitioning.set(true);
     }
   });
 })
@@ -17,6 +21,8 @@ Template.slide.created = function() {
 
 Template.slide.helpers({
   visible: function() {
-    return Session.equals('visibleSlideIndex', Template.instance().index);
+    var index = Template.instance().index;
+    return Session.equals('visibleSlideIndex', index)
+      || (transitioning.get() && Session.equals('visibleSlideIndex', index + 1));
   }
 });

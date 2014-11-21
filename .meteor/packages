@@ -8,4 +8,5 @@ autopublish
 insecure
 percolate:interpolated-helper
 d3
+reactive-var
 
