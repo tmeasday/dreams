@@ -1,0 +1,11 @@
+<template name="drips">
+  {{#each dripLines}}
+    {{> _dripLine}}
+  {{/each}}
+</template>
+
+<template name="_dripLine">
+  {{#each drips}}
+    <line class="drip" x1={{x}} x2={{x}} y1={{top}} y2={{bottom}}></line>
+  {{/each}}
+</template>

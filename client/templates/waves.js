@@ -6,6 +6,8 @@ var coords = function(t, max) { // t between 0-1
 }
 
 Template.waves.created = function() {
+  transitioning.set(false);
+  
   this.easer = new ReactiveEaser(d3.ease('linear'), 5000);
   this.easer.loop();
 }

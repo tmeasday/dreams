@@ -3,7 +3,7 @@ var N_DRIPS_PER_LINE = 3;
 var MAX_PERIOD = 10000;
 
 
-Template.dreams.helpers({
+Template.drips.helpers({
   dripLines: function() {
     return _.times(N_DRIP_LINES, _.identity);
   }
@@ -27,7 +27,7 @@ var circulator = function(x, min, max) {
 }
 
 
-Template._dreamsDripLine.created = function() {
+Template._dripLine.created = function() {
   // no transition required
   transitioning.set(false);
   
@@ -45,7 +45,7 @@ Template._dreamsDripLine.created = function() {
   }
 };
 
-Template._dreamsDripLine.helpers({
+Template._dripLine.helpers({
   drips: function() {
     return Template.instance().drips;
   },

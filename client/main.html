@@ -26,7 +26,8 @@
 
 <template name="slide">
   {{#if visible}}
-    <h1>{{template}}</h1>
-    {{> Template.dynamic template=template}}
+    <g id="{{template}}">
+      {{> Template.dynamic template=template}}
+    </g>
   {{/if}}
 </template>
