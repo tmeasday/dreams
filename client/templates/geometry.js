@@ -1,7 +1,3 @@
-Template.geometry.created = function() {
-  transitioning.set(false);
-}
-
 Template.geometry.helpers({
   r: function() {
     return SVG_WIDTH;

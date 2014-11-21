@@ -28,9 +28,6 @@ var circulator = function(x, min, max) {
 
 
 Template._dripLine.created = function() {
-  // no transition required
-  transitioning.set(false);
-  
   this.easer = new ReactiveEaser(d3.ease('linear'), randomLike(MAX_PERIOD));
   this.easer.loop();
 
