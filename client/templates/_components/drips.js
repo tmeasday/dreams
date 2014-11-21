@@ -10,13 +10,6 @@ Template.drips.helpers({
 });
 
 
-// XXX: this should probably go in the interpolated helper package
-var interpolate = function(interpolator, easer) {
-  return function() {
-    return interpolator(easer.get());
-  }
-}
-
 // kind of like an interpolator, but instead varies y between max and min in a loop
 // XXX: this feels weird?
 var circulator = function(x, min, max) {

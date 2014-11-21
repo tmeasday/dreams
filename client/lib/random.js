@@ -2,3 +2,7 @@
 randomLike = function(n) {
   return (0.5 + Math.random()) * n;
 }
+
+randomBetween = function(max, min) {
+  return Math.random() * (max - min) + min;
+}
