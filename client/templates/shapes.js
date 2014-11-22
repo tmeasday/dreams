@@ -2,7 +2,7 @@ Template.shapes.created = function() {
   var self = this;
   
   self.firstEaser = new ReactiveEaser(1000);
-  self.secondEaser = new ReactiveEaser(d3.ease('bounce'), 5000)
+  self.secondEaser = new ReactiveEaser(3000)
   
   self.shapeParams = _.times(6, function() {
     var size = randomLike(0.2);
@@ -15,18 +15,17 @@ Template.shapes.created = function() {
       scale: interpolate(d3.interpolateNumber(1, size), self.firstEaser),
       x: function() {
         return d3.interpolateNumber(0, x1)(self.firstEaser.get())
-          + d3.interpolateNumber(x2, x1)(self.secondEaser.get());
+          + d3.interpolateNumber(0, x1-x2)(self.secondEaser.get());
       },
       y: function() {
         return d3.interpolateNumber(0, y1)(self.firstEaser.get())
-          + d3.interpolateNumber(y2, y1)(self.secondEaser.get());
+          + d3.interpolateNumber(0, y1-y2)(self.secondEaser.get());
       },
     }
   });
-
+  
   self.firstEaser.start(function() {
-    // XXX: this needs to be like bounce not loop
-    self.secondEaser.loop();
+    self.secondEaser.bounce();
   })
 }
 
