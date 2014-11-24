@@ -1,9 +1,11 @@
 <template name="shapes">
   <text>intangible to tangible</text>
   <g transform="{{transform 0}}">{{> circle}}</g>
-  <g transform="{{transform 1}}">{{> circle}}</g>
-  <g transform="{{transform 2}}">{{> square}}</g>
-  <g transform="{{transform 3}}">{{> square}}</g>
-  <g transform="{{transform 4}}">{{> triangle}}</g>
-  <g transform="{{transform 5}}">{{> triangle}}</g>
+  <g style="opacity: {{fade}}">
+    <g transform="{{transform 1}}">{{> circle}}</g>
+    <g transform="{{transform 2}}">{{> square}}</g>
+    <g transform="{{transform 3}}">{{> square}}</g>
+    <g transform="{{transform 4}}">{{> triangle}}</g>
+    <g transform="{{transform 5}}">{{> triangle}}</g>
+  </g>
 </template>

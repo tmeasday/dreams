@@ -1,19 +1,19 @@
 Session.setDefault('visibleSlideIndex', 0);
 
-var currentSlideTemplate;
+var slideViews = [];
 
 var previous = function() {
   Session.set('visibleSlideIndex', Session.get('visibleSlideIndex') - 1);
 }
 
 var next = function() {
+  var currentIndex = Session.get('visibleSlideIndex');
   var done = function() {
-    Session.set('visibleSlideIndex', Session.get('visibleSlideIndex') + 1);
+    Session.set('visibleSlideIndex', currentIndex + 1);
   }
   
-  // let the current slide wrap things up, if it wants
-  if (currentSlideTemplate.finalize) {
-    currentSlideTemplate.finalize(done);
+  if (slideViews[currentIndex].finalize) {
+    slideViews[currentIndex].finalize(done);
   } else {
     done();
   }
@@ -31,8 +31,8 @@ $(function() {
 
 var i = 0;
 Template.slide.created = function() {
-  currentSlideTemplate = this;
   this.index = i++;
+  slideViews[this.index] = this.view;
 }
 
 Template.slide.helpers({

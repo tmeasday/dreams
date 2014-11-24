@@ -29,7 +29,7 @@ Template._dripLine.created = function() {
     var startTop = (randomLike(1/3) + i)/3;
     this.drips.push({
       x: this.data * 2 * SVG_WIDTH / N_DRIP_LINES - SVG_WIDTH,
-      top: interpolate(circulator(startTop, -SVG_HEIGHT, SVG_HEIGHT), this.easer),
+      top: this.easer.ease(circulator(startTop, -SVG_HEIGHT, SVG_HEIGHT)),
       height: randomLike(1/4) * SVG_HEIGHT
     });
   }
