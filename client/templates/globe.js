@@ -1,6 +1,11 @@
 Template.globe.created = function() {
-  this.easer = new ReactiveEaser(d3.ease('sin-in-out'), 3000);
-  this.easer.loop();
+  var self = this;
+  self.easer = new ReactiveEaser(d3.ease('sin-in-out'), 3000);
+  self.easer.loop();
+  
+  Blaze._getCurrentView('Template.slide').finalize = function(done) {
+    self.easer.finish(done);
+  };
 }
 
 Template.globe.helpers({
