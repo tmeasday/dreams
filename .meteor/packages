@@ -10,4 +10,5 @@ percolate:interpolated-helper
 d3
 reactive-var
 less
+dburles:collection-helpers
 
