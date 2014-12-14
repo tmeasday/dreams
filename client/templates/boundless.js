@@ -3,7 +3,10 @@ var ZOOM = 2;
 
 Template.boundless.created = function () {
   Circles.boundaryEaser.start(function() {
-    Circles.depthEaser.loop();
+    // wait a moment, then
+    Meteor.setTimeout(function() {
+      Circles.depthEaser.loop();
+    }, 300);
   });
 }
 

@@ -8,13 +8,12 @@ Circles = new Meteor.Collection(null);
 
 // The bound of the cirles -- when 0, they are all inside the boundary
 //   -- when 1, they are where they "want" to be.
-Circles.boundaryEaser = new ReactiveEaser(d3.ease('linear'), 500);
+Circles.boundaryEaser = new ReactiveEaser(d3.ease('linear'), 1000);
 
 // The z-depth of the circles -- when 0 they are at their starting depth,
 //   when it reaches 1 they have returned to that depth, via close + far
-Circles.depthEaser = new ReactiveEaser(d3.ease('linear'), 1000);
+Circles.depthEaser = new ReactiveEaser(d3.ease('linear'), 3000);
 Circles.depthEaser.set(0.5)
-
 
 var FOCAL_DEPTH = 1;
 
@@ -34,8 +33,11 @@ Circles.helpers({
     // 0 - 2 -- will be 0.5 when inside the boundary
     var depth = this.currentDepthOffset() + Circles.depthEaser.get();
     
+    // make it between 0-1 and circular as the depthEaser changes
+    var normalizedDepth = (1+depth) % 1;
+  
     // make it -3 - 3 -- and 0 when inside the boundary
-    var currentDepth = (1 - 2 * (depth % 1));
+    var currentDepth = 1 - 2 * normalizedDepth;
     return measurement * FOCAL_DEPTH / (FOCAL_DEPTH + currentDepth);
   },
   currentDepthOffset: function() {
