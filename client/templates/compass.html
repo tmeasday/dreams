@@ -1,2 +1,13 @@
 <template name="compass">
+  <defs>
+    <clipPath id="hide-watch-face">
+      <polygon points="{{maskPoints}}"></polygon>
+    </clipPath>
+  </defs>
+  
+  <text>A FEELING</text>  
+  <!-- <circle cx=0 cy=0 r={{RADIUS}} stroke-dasharray="2,6" clip-path="url(#hide-watch-face)"></circle> -->
+  <path class="watch-face" d={{arcPath}} stroke-dasharray="2,6"></path>
+  <rect {{minuteAttrs}}></rect>
+  <rect {{hourAttrs}}></rect>
 </template>
