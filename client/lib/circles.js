@@ -30,18 +30,19 @@ Circles.helpers({
   // the effective size of a measurement (x,y pos / radius) given the current
   //   viewing depth (controlled by the depthEaser) + the circle's depth offset
   effective: function(measurement) {
-    // 0 - 2 -- will be 0.5 when inside the boundary
-    var depth = this.currentDepthOffset() + Circles.depthEaser.get();
-    
-    // make it between 0-1 and circular as the depthEaser changes
-    var normalizedDepth = (1+depth) % 1;
-  
     // make it -3 - 3 -- and 0 when inside the boundary
-    var currentDepth = 1 - 2 * normalizedDepth;
+    var currentDepth = 1 - 2 * this.normalizedDepth();
     return measurement * FOCAL_DEPTH / (FOCAL_DEPTH + currentDepth);
   },
   currentDepthOffset: function() {
     return this.depthOffset * Circles.boundaryEaser.get();
+  },
+  normalizedDepth: function() {
+    // 0 - 2 -- will be 0.5 when inside the boundary
+    var depth = this.currentDepthOffset() + Circles.depthEaser.get();
+    
+    // make it between 0-1 and circular as the depthEaser changes
+    return (1+depth) % 1; // we add 1 because %1 doesn't work right
   },
   r: function () {
     return Math.abs(SVG_WIDTH * this.effective(this.radius));
