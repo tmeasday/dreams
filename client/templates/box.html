@@ -1,0 +1,14 @@
+<template name="box">
+  <g class="container">
+    <rect x="{{MAX_X}}" y="{{MIN_Y}}" width="1" height="{{HEIGHT}}" />
+    <rect x="{{MIN_X}}" y="{{MIN_Y}}" width="{{WIDTH}}" height="1" />
+    <rect x="{{MIN_X}}" y="{{MIN_Y}}" width="1" height="{{HEIGHT}}" />
+    <rect x="{{MIN_X}}" y="{{MAX_Y}}" width="{{WIDTH}}" height="1" />
+  </g>
+  <g class="lines">
+    {{#each lines}}
+      <rect x="{{MIN_X}}" y="{{y}}" width="{{currentWidth}}" height="1" />
+      <circle cx="{{cx}}" cy="{{y}}" r="3" />
+    {{/each}}
+  </g>
+</template>

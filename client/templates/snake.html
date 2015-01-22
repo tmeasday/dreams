@@ -1,9 +1,9 @@
 <template name="snake">
   <g transform="rotate({{currentRotation}})">
-    <rect class="line-0" x="{{maxX}}" y="{{minY}}" width="1" height="{{height}}" />
-    <rect class="line-1" x="{{minX}}" y="{{minY}}" width="{{width}}" height="1" />
-    <rect class="line-2" x="{{minX}}" y="{{minY}}" width="1" height="{{height}}" />
-    <rect class="line-3" x="{{minX}}" y="{{maxY}}" width="{{currentWidth}}" height="1" />
-    <circle class="dot" cx="{{cx}}" cy="{{maxY}}" r="3" />
+    <rect class="line-0" x="{{MAX_X}}" y="{{MIN_Y}}" width="1" height="{{HEIGHT}}" />
+    <rect class="line-1" x="{{MIN_X}}" y="{{MIN_Y}}" width="{{WIDTH}}" height="1" />
+    <rect class="line-2" x="{{MIN_X}}" y="{{MIN_Y}}" width="1" height="{{HEIGHT}}" />
+    <rect class="line-3" x="{{MIN_X}}" y="{{MAX_Y}}" width="{{currentWidth}}" height="1" />
+    <circle class="dot" cx="{{cx}}" cy="{{MAX_Y}}" r="3" />
   </g>
 </template>
