@@ -1,2 +1,27 @@
 <template name="bike">
+  <g transform="translate({{wheelOneX}}, 0) rotate({{wheelRotation}})">
+    {{> bikeWheel}}
+  </g>
+  <g transform="translate({{wheelTwoX}}, 0) rotate({{wheelRotation}})">
+    {{> bikeWheel}}
+  </g>
+  <g transform="translate({{pistonTranslation}})">
+    <rect x="{{wheelOneX}}" y="0" width="{{distance}}" height="1" />
+    <circle cx="{{wheelOneX}}" cy="0" r="3"/>
+    <circle cx="{{wheelTwoX}}" cy="0" r="3"/>
+  </g>
+</template>
+
+<template name="bikeWheel">
+  <circle cx="0" cy="0" r="{{radius}}"/>
+  <rect {{rectAttrs}} />
+  <g transform="rotate(45)">
+    <rect {{rectAttrs}} />
+  </g>
+  <g transform="rotate(90)">
+    <rect {{rectAttrs}} />
+  </g>
+  <g transform="rotate(135)">
+    <rect {{rectAttrs}} />
+  </g>
 </template>
