@@ -2,3 +2,27 @@ svg .drip {
   stroke: #999;
   stroke-width: 0.3;
 }
+
+#scope circle {
+  fill: transparent;
+  stroke: #999;
+}
+
+#scope .ring-0 circle {
+  stroke-dasharray: 1%,1%;
+  stroke-width: 0.5;
+}
+
+#scope .ring-1 circle {
+  /* add to 200% for some reason */
+  stroke-dasharray: 40% 4% 30% 4% 40% 4% 40% 38%;
+  stroke-width: 2;
+}
+
+#scope .ring-2 circle {
+  stroke-width: 1;
+}
+
+#scope .ring-3 circle {
+  stroke-dasharray: 2%,3%;
+}
